@@ -2,6 +2,8 @@ version: "2"
 services:
   red:
     image: redis
+    ports:
+      - "2008:6379"
   web:
     image: myfastapi:latest
     ports:
