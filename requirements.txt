@@ -3,8 +3,8 @@ wheel~=0.36.2
 pip~=21.1.2
 fastapi==0.75.2
 uvicorn==0.13.3
-starlette==0.13.6
-pydantic==1.7.3
+starlette==0.17.1
+pydantic==1.6.2
 loguru~=0.5.3
 PyJWT==2.0.1
 python-dotenv==0.16.0

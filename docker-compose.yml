@@ -1,0 +1,10 @@
+version: "2"
+services:
+  red:
+    image: redis
+  web:
+    image: myfastapi:latest
+    ports:
+      - "2007:2007"
+    volumes:
+      - .:/code

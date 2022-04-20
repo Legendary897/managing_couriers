@@ -27,5 +27,5 @@ async def delete_the_order(order_id):
 
 
 @route_for_couriers.get(url_manage_cour["GetCourier"])
-async def get_courier():
+async def get_courier(lng: float, ltd: float):
     return Response()
