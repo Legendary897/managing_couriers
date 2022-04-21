@@ -1,5 +1,12 @@
 version: "2"
 services:
+  image: postgres:13.3
+    environment:
+      POSTGRES_DB: "couriers_db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "habr"
+    ports:
+      - "2009:5432"
   red:
     image: redis
     ports:
