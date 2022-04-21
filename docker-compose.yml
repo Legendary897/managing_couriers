@@ -1,6 +1,7 @@
 version: "2"
 services:
-  image: postgres:13.3
+  db:
+    image: couriers_db:latest
     environment:
       POSTGRES_DB: "couriers_db"
       POSTGRES_USER: "user"
