@@ -1,14 +1,15 @@
-create table if not exists public.area (
+create table if not exists public.area(
 	id serial primary key,
-	area_info json not null
-)
+	area_info json not null,
+	name_zone varchar not null
+);
 
 
-create table if not exists public.couriers (
+create table if not exists public.couriers(
 	id SERIAL primary key,
 	id_area int references area(id),
 	couriers_info json not null
-)
+);
 
 insert into public.area(area_info, name_zone)
 values (
@@ -20,9 +21,7 @@ values (
 			[55.995194, 92.971252]
 		]
 	}',
-	'Правый берег'
-),
-(
+	'Правый берег'),(
 	'{
 		"polygon": [
 			[56.006896, 92.871714],
@@ -31,5 +30,4 @@ values (
 			[55.992828, 92.809500]
 		]
 	}',
-	'Левый берег'
-)
+	'Левый берег');

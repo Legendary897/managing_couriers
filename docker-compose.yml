@@ -1,19 +1,20 @@
 version: "2"
 services:
   db:
-    image: couriers_db:latest
+    image: postgres:13
     environment:
-      POSTGRES_DB: "couriers_db"
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "habr"
     ports:
       - "2009:5432"
+    volumes:
+      - ./db_config_docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
   red:
     image: redis
     ports:
       - "2008:6379"
   web:
-    image: myfastapi:latest
+    image: my_server:latest
     ports:
       - "2007:2007"
     volumes:

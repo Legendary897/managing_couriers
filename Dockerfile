@@ -10,8 +10,6 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./apps /code/apps
 
-COPY ./docs /code/docs
-
 COPY ./routers /code/routers
 
 COPY ./server_config /code/server_config
