@@ -1,5 +1,17 @@
 version: "2"
 services:
+  web:
+    image: my_server:latest
+    ports:
+      - "2007:2007"
+    volumes:
+      - .:/code
+
+  red:
+    image: redis
+    ports:
+      - "2008:6379"
+    container_name: "redis"
   db:
     image: postgres:13
     environment:
@@ -8,9 +20,10 @@ services:
       POSTGRES_DB: "my_db"
     ports:
       - "2009:5432"
+    container_name: "postgres"
     volumes:
       - ./db_config_docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-  red:
-    image: redis
-    ports:
-      - "2008:6379"
+networks:
+  default:
+    external:
+      name: managing-couriers-network
