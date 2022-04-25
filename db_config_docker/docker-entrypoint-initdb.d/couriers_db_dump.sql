@@ -1,17 +1,17 @@
-create table if not exists public.area(
+create table if not exists public.zone(
 	id serial primary key,
-	area_info json not null,
+	zone_info json not null,
 	name_zone varchar not null
 );
 
 
 create table if not exists public.couriers(
 	id SERIAL primary key,
-	id_area int references area(id),
+	id_zone int references zone(id),
 	couriers_info json not null
 );
 
-insert into public.area(area_info, name_zone)
+insert into public.zone(zone_info, name_zone)
 values (
 	'{
 		"polygon": [

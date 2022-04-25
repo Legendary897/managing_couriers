@@ -17,4 +17,3 @@ cache.setup(Settings.REDIS_HOST,
 application = FastAPI()
 application.include_router(route_for_zones)
 application.include_router(route_for_couriers)
-

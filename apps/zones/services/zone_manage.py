@@ -24,6 +24,6 @@ class ZoneManage:
     async def get_all_zone():
         results = [{
             "id": i['id'],
-            "area_info" : i['area_info']
+            "area_info" : i['zone_info']
         } for i in await db_client.fetchall(query="SELECT id, area_info FROM area")]
         return results

@@ -9,4 +9,4 @@ class CourierInfo(BaseModel):
 
 class Courier(BaseModel):
     couriers_info: CourierInfo
-    id_area: int
+    id_zone: int
