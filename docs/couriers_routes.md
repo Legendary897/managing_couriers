@@ -13,7 +13,7 @@
     "surname": "string",
     "age": 0
   },
-  "id_area": 0
+  "id_zone": 0
 }
 ```
 

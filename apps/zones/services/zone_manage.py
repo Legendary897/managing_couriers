@@ -13,7 +13,7 @@ class ZoneManage:
             "polygon": [[i.lng, i.ltd] for i in zone.polygon]
         })
         query = f"""
-        INSERT INTO area(name_zone, area_info)
+        INSERT INTO zone(name_zone, zone_info)
         VALUES ('{name}', '{info}')
         """
         await db_client.insert_data(query=query)
@@ -24,6 +24,6 @@ class ZoneManage:
     async def get_all_zone():
         results = [{
             "id": i['id'],
-            "area_info" : i['zone_info']
-        } for i in await db_client.fetchall(query="SELECT id, area_info FROM area")]
+            "zone_info": i['zone_info']
+        } for i in await db_client.fetchall(query="SELECT id, zone_info FROM zone")]
         return results
