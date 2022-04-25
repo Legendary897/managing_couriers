@@ -18,3 +18,11 @@ class Settings(object):
     DB_USER = os.environ.get("DB_USER")
     DB_PASSWORD = os.environ.get("DB_PASSWORD")
     DATABASE = os.environ.get("DATABASE")
+
+    # Redis
+    REDIS_HOST = f"""redis://{os.environ.get("REDIS_HOST")}"""
+    REDIS_PORT = int(os.environ.get("REDIS_PORT"))
+    REDIS_ZONE_INFO_DB = int(os.environ.get("REDIS_ZONE_INFO_DB"))
+
+    # Redis cache
+    CACHE_ZONE_KEY = os.environ.get("CACHE_ZONE_KEY")

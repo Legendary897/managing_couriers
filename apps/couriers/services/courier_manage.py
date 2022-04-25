@@ -2,6 +2,7 @@ import json
 from apps.couriers.serialize.serialize_couriers import get_courier_info
 from apps.couriers.services.check_point_in_polygon import check_in
 from apps.couriers.models.courier_model import Courier
+from apps.zones.services.zone_manage import ZoneManage
 from db.db_service import db_client
 
 
@@ -9,7 +10,7 @@ class CourierManage:
 
     @staticmethod
     async def get_courier(point: dict):
-        areas = await db_client.fetchall(query="SELECT id, area_info FROM area")
+        areas = await ZoneManage.get_all_zone()
         for area in areas:
             if await check_in(point=point, polygon=json.loads(area['area_info'])['polygon']):
                 results = await db_client.fetchall(

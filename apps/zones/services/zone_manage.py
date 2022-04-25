@@ -1,5 +1,6 @@
+from datetime import timedelta
 import json
-
+from cashews import cache
 from apps.zones.models.zone_model import Zone
 from db.db_service import db_client
 
@@ -16,3 +17,13 @@ class ZoneManage:
         VALUES ('{name}', '{info}')
         """
         await db_client.insert_data(query=query)
+        await cache.delete(key="zones")
+
+    @staticmethod
+    @cache(ttl=timedelta(days=1), key="zones")
+    async def get_all_zone():
+        results = [{
+            "id": i['id'],
+            "area_info" : i['area_info']
+        } for i in await db_client.fetchall(query="SELECT id, area_info FROM area")]
+        return results
