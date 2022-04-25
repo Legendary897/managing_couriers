@@ -17,3 +17,4 @@ class Settings(object):
     DB_PORT = int(os.environ.get("DB_PORT"))
     DB_USER = os.environ.get("DB_USER")
     DB_PASSWORD = os.environ.get("DB_PASSWORD")
+    DATABASE = os.environ.get("DATABASE")

@@ -5,6 +5,7 @@ services:
     environment:
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "habr"
+      POSTGRES_DB: "my_db"
     ports:
       - "2009:5432"
     volumes:
@@ -13,9 +14,3 @@ services:
     image: redis
     ports:
       - "2008:6379"
-  web:
-    image: my_server:latest
-    ports:
-      - "2007:2007"
-    volumes:
-      - .:/code

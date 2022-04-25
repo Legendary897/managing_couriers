@@ -7,5 +7,6 @@ class Point(BaseModel):
     ltd: float
 
 
-class Area(BaseModel):
+class Zone(BaseModel):
     polygon: List[Point]
+    name_zone: str
