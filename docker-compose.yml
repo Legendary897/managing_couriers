@@ -1,5 +1,11 @@
 version: "2"
 services:
+  web:
+    image: my_server:latest
+    ports:
+      - "2007:2007"
+    volumes:
+      - .:/code
   db:
     image: postgis/postgis:latest
     environment:
