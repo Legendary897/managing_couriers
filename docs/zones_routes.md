@@ -12,9 +12,17 @@
     {
       "lng": 0,
       "ltd": 0
+    },
+    {
+      "lng": 1,
+      "ltd": 1
+    },
+    {
+      "lng": 2,
+      "ltd": 1
     }
   ],
-  "name_zone": "string"
+  "name_zone": "TEST_ZONE"
 }
 ```
 

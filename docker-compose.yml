@@ -1,19 +1,7 @@
 version: "2"
 services:
-  web:
-    image: my_server:latest
-    ports:
-      - "2007:2007"
-    volumes:
-      - .:/code
-
-  red:
-    image: redis
-    ports:
-      - "2008:6379"
-    container_name: "redis"
   db:
-    image: postgres:13
+    image: postgis/postgis:latest
     environment:
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "habr"

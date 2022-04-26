@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from pydantic.fields import List
+from pydantic.fields import List, Field
 
 
 class Point(BaseModel):
@@ -8,5 +8,5 @@ class Point(BaseModel):
 
 
 class Zone(BaseModel):
-    polygon: List[Point]
+    polygon: List[Point] = Field(min_items=3)
     name_zone: str

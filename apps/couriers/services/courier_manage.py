@@ -1,8 +1,6 @@
 import json
 from apps.couriers.serialize.serialize_couriers import get_courier_info
-from apps.couriers.services.check_point_in_polygon import check_in
 from apps.couriers.models.courier_model import Courier
-from apps.zones.services.zone_manage import ZoneManage
 from db.db_service import db_client
 
 
@@ -10,12 +8,18 @@ class CourierManage:
 
     @staticmethod
     async def get_courier(point: dict):
-        areas = await ZoneManage.get_all_zone()
-        for area in areas:
-            if await check_in(point=point, polygon=json.loads(area['zone_info'])['polygon']):
-                results = list(await db_client.fetchall(
-                    query=f"""SELECT id, couriers_info, id_zone FROM couriers WHERE id_zone = {area['id']}"""))
-                return await get_courier_info(results[0]) if len(results) > 0 else {"info": "В данной зоне доставки нет курьеров"}
+        query_check = f"""
+        SELECT c.id AS id_cour, c.couriers_info AS info, z.name_zone AS zone_name, z.id AS zone_id 
+        FROM couriers c
+        JOIN "zone" z ON z.id = c.id_zone 
+        WHERE z.id IN (
+            SELECT id 
+            FROM "zone"  
+            WHERE ST_Contains(zone_info, ST_Point({point['lng']}, {point['ltd']}))
+        )"""
+        results = list(await db_client.fetchall(query=query_check))
+        if len(results) > 0:
+            return await get_courier_info(results[0])
         return {"info": "Точка доставки не входит ни в одну из доступных зон доставки"}
 
     @staticmethod
