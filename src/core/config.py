@@ -19,6 +19,8 @@ class Settings(object):
     DB_PASSWORD = os.environ.get("DB_PASSWORD")
     DATABASE = os.environ.get("DATABASE")
 
+    DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DATABASE}"
+
     # На данный момент отключил за ненадобностью, так как получилось перевести часть логики на запрос к БД.
     # Redis
     # REDIS_HOST = f"""redis://{os.environ.get("REDIS_HOST")}"""

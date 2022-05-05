@@ -16,6 +16,9 @@ python-dotenv==0.16.0
 six==1.16.0
 sniffio==1.2.0
 starlette==0.17.1
+sqlmodel==0.0.6
 typing-extensions==4.2.0
-uvicorn==0.13.3
+uvicorn==0.15.0
 wrapt==1.14.0
+SQLAlchemy~=1.4.36
+shapely==1.8.2

@@ -1,0 +1,29 @@
+from typing import Optional
+from datetime import date
+
+from sqlalchemy import Column
+from sqlmodel import SQLModel, Field, JSON
+
+
+class CourierInfo(SQLModel):
+    first_name: str
+    last_name: str
+    middle_name: Optional[str] = Field(default=None)
+    phone_number: str
+    birthday: date
+
+
+class CourierBase(SQLModel):
+    couriers_info: CourierInfo = Field(sa_column=Column(JSON))
+    id_zone: Optional[int] = Field(foreign_key="zone.id")
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class Courier(CourierBase, table=True):
+    id: int = Field(default=None, primary_key=True)
+
+
+class CourierCreate(CourierBase):
+    pass
