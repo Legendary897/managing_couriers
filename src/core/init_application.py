@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from routers.zones_routers import route_for_zones
-from routers.couriers_routers import route_for_couriers
+from api.v1.zones_routers import route_for_zones
+from api.v1.couriers_routers import route_for_couriers
 
 
 application = FastAPI()

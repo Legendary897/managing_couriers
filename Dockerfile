@@ -10,16 +10,8 @@ RUN pip3 install --upgrade pip
 
 RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./apps /code/apps
+COPY ./src /code/src
 
-COPY ./routers /code/routers
-
-COPY ./server_config /code/server_config
-
-COPY ./init_application.py /code/init_application.py
-
-COPY ./server.py /code/server.py
-
-CMD ["python", "/code/server.py"]
+CMD ["python", "/code/src/main.py"]
 
 

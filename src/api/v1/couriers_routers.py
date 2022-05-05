@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response
-from apps.couriers.models.courier_model import Courier
-from apps.couriers.services.courier_manage import CourierManage
-from server_config.urls import url_manage_courier
+from models.courier_model import Courier
+from services.courier_manage import CourierManage
+from core.urls import url_manage_courier
 
 route_for_couriers = APIRouter()
 

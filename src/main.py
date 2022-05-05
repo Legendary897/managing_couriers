@@ -1,8 +1,9 @@
 import logging
 import sys
 from uvicorn import Config, Server
+from core.init_application import application
 from loguru import logger
-from server_config.config import Settings
+from core.config import Settings
 
 
 class InterceptHandler(logging.Handler):
@@ -40,7 +41,7 @@ def setup_logging():
 if __name__ == "__main__":
     try:
         server = Server(
-            Config("init_application:application",
+            Config(app=application,
                    host=Settings.HTTP_SERVER_HOST,
                    port=Settings.HTTP_SERVER_PORT,
                    workers=Settings.COUNT_WORKERS_UVICORN,

@@ -4,8 +4,6 @@ services:
     image: my_server:latest
     ports:
       - "2007:2007"
-    volumes:
-      - .:/code
   db:
     image: postgis/postgis:latest
     environment:

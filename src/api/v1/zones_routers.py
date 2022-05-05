@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response
-from server_config.urls import url_manage_zone
-from apps.zones.models.zone_model import Zone
-from apps.zones.services.zone_manage import ZoneManage
+from core.urls import url_manage_zone
+from models.zone_model import Zone
+from services.zone_manage import ZoneManage
 
 route_for_zones = APIRouter()
 

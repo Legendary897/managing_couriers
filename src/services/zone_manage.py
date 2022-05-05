@@ -1,5 +1,4 @@
-import json
-from apps.zones.models.zone_model import Zone
+from models.zone_model import Zone
 from db.db_service import db_client
 
 

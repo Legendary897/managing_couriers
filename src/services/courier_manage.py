@@ -1,6 +1,5 @@
-import json
-from apps.couriers.serialize.serialize_couriers import get_courier_info
-from apps.couriers.models.courier_model import Courier
+from models.serializers.serialize_couriers import get_courier_info
+from models.courier_model import Courier
 from db.db_service import db_client
 
 
