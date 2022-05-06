@@ -2,9 +2,9 @@ from sqlmodel import SQLModel
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
-from src.core.config import Settings
-from src.models.couriers.couriers_models import Courier
-from src.models.zones.zones_models import Zone
+from core.config import Settings
+from models.couriers.couriers_models import Courier
+from models.zones.zones_models import Zone
 
 engine = create_async_engine(Settings.DATABASE_URL, echo=True, future=True)
 

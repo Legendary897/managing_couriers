@@ -4,9 +4,9 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
 
-from src.models.couriers.couriers_models import Courier, CourierCreateModel
-from src.models.zones.zones_models import Zone
-from src.services.zones.utils import cross_poly_point
+from models.couriers.couriers_models import Courier, CourierCreateModel
+from models.zones.zones_models import Zone
+from services.zones.utils import cross_poly_point
 
 
 class CourierManage:

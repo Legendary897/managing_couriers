@@ -1,7 +1,7 @@
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.models.zones.zones_models import Zone, ZoneCreateModel
+from models.zones.zones_models import Zone, ZoneCreateModel
 
 
 class ZoneManage:
