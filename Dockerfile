@@ -12,6 +12,4 @@ RUN pip3 install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./src /code/src
 
-COPY ./db_config_docker/wait-for-it.sh /code/src/wait-for-it.sh
-
 

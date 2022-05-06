@@ -1,8 +1,8 @@
 from fastapi import Depends
-from src.models.zones.zones_models import Zone, ZoneCreate
+from models.zones.zones_models import Zone, ZoneCreate
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.db.db_initial import get_session
+from db.db_initial import get_session
 
 
 class ZoneManage:

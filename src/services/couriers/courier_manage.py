@@ -4,11 +4,11 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
 
-from src.models.couriers.serializers.serialize_couriers import get_courier_info
-from src.models.couriers.couriers_models import Courier, CourierCreate
-from src.models.zones.zones_models import Zone
-from src.db.db_initial import get_session
-from src.services.zones.utils import cross_poly_point
+from models.couriers.serializers.serialize_couriers import get_courier_info
+from models.couriers.couriers_models import Courier, CourierCreate
+from models.zones.zones_models import Zone
+from db.db_initial import get_session
+from services.zones.utils import cross_poly_point
 
 
 class CourierManage:
