@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from api.v1.zones_routers import route_for_zones
-from api.v1.couriers_routers import route_for_couriers
-from db.db_initial import init_db
+from src.api.v1.zones_routers import route_for_zones
+from src.api.v1.couriers_routers import route_for_couriers
+from src.db.db_service import init_db
 
 
 application = FastAPI()

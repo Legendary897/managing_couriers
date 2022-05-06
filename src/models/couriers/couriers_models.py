@@ -13,7 +13,7 @@ class CourierInfo(SQLModel):
     birthday: date
 
 
-class CourierBase(SQLModel):
+class CourierBaseModel(SQLModel):
     couriers_info: CourierInfo = Field(sa_column=Column(JSON))
     id_zone: Optional[int] = Field(foreign_key="zone.id")
 
@@ -21,9 +21,9 @@ class CourierBase(SQLModel):
         arbitrary_types_allowed = True
 
 
-class Courier(CourierBase, table=True):
+class Courier(CourierBaseModel, table=True):
     id: int = Field(default=None, primary_key=True)
 
 
-class CourierCreate(CourierBase):
+class CourierCreateModel(CourierBaseModel):
     pass

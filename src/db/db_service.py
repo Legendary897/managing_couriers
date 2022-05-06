@@ -1,40 +1,23 @@
-import asyncpg
-from core.config import Settings
+from sqlmodel import SQLModel
+
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.orm import sessionmaker
+from src.core.config import Settings
+from src.models.couriers.couriers_models import Courier
+from src.models.zones.zones_models import Zone
+
+engine = create_async_engine(Settings.DATABASE_URL, echo=True, future=True)
 
 
-class PostgreManager:
-
-    def __new__(cls):
-        if not hasattr(cls, 'instance'):
-            cls.instance = super(PostgreManager, cls).__new__(cls)
-        return cls.instance
-
-    def __init__(self):
-        self.host = Settings.DB_HOST
-        self.port = Settings.DB_PORT
-        self.user = Settings.DB_USER
-        self.password = Settings.DB_PASSWORD
-        self.db = Settings.DATABASE
-        self.pool = None
-
-    async def setting_pools(self):
-        self.pool = await asyncpg.create_pool
-
-    async def fetchall(self, query):
-        async with await asyncpg.create_pool(host=self.host,
-                                             port=self.port,
-                                             user=self.user,
-                                             password=self.password,
-                                             database=self.db) as pool:
-            return await pool.fetch(query)
-
-    async def insert_data(self, query):
-        async with await asyncpg.create_pool(host=self.host,
-                                             port=self.port,
-                                             user=self.user,
-                                             password=self.password,
-                                             database=self.db) as pool:
-            await pool.execute(query)
+async def init_db():
+    async with engine.begin() as conn:
+        # await conn.run_sync(SQLModel.metadata.drop_all)
+        await conn.run_sync(SQLModel.metadata.create_all)
 
 
-db_client = PostgreManager()
+async def get_session() -> AsyncSession:
+    async_session = sessionmaker(
+        engine, class_=AsyncSession, expire_on_commit=False
+    )
+    async with async_session() as session:
+        yield session
