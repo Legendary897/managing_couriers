@@ -4,7 +4,6 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import select
 
-from models.couriers.serializers.serialize_couriers import get_courier_info
 from models.couriers.couriers_models import Courier, CourierCreate
 from models.zones.zones_models import Zone
 from db.db_initial import get_session
