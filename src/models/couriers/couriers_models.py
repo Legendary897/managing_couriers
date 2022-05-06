@@ -14,16 +14,19 @@ class CourierInfo(SQLModel):
 
 
 class CourierBaseModel(SQLModel):
-    couriers_info: CourierInfo = Field(sa_column=Column(JSON))
     id_zone: Optional[int] = Field(foreign_key="zone.id")
+
+
+class Courier(CourierBaseModel, table=True):
+    id: int = Field(default=None, primary_key=True)
+    couriers_info: dict = Field(sa_column=Column(JSON))
 
     class Config:
         arbitrary_types_allowed = True
 
 
-class Courier(CourierBaseModel, table=True):
-    id: int = Field(default=None, primary_key=True)
-
-
 class CourierCreateModel(CourierBaseModel):
-    pass
+    couriers_info: CourierInfo = Field(sa_column=Column(JSON))
+
+    class Config:
+        arbitrary_types_allowed = True

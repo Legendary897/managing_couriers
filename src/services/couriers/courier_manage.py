@@ -26,7 +26,11 @@ class CourierManage:
 
     @staticmethod
     async def create_courier(courier: CourierCreateModel, session: AsyncSession):
-        new_courier = Courier(couriers_info=courier.couriers_info, id_zone=courier.id_zone)
+        courier_info = {
+        }
+        for key, val in courier:
+            courier_info[key] = val
+        new_courier = Courier(couriers_info=courier_info, id_zone=courier.id_zone)
         session.add(new_courier)
         try:
             await session.commit()
